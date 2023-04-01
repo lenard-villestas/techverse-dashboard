@@ -2,9 +2,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 body{
-  background-color: white;
-  color: black;
-  font-family: Roboto,sans-serif;
+  background-color: rgb(32, 32, 32);
+  color: whitesmoke;
+  font-family: roboto;
   min-height: 100vh;
   width: 100vw;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.chart{
+  width: 93%;
+  margin: auto;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 0.75rem;
+  border-color: rgb(190, 190, 252);
+  border-width: 2px;
+}
+h1{
+  font-weight: lighter;
+}
+
+
+
+
+
+.chartSwitch{
+  width: 70%;
+  margin-left: 1rem;
+}
+.chartSwitch ul{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+
+  
+}
+.chartSwitch ul li button{
+
+  background-color: rgb(56, 56, 56);
+  color: white;
+  border-style: none;
+
+  font-size: 1rem;
+  border-style:ridge;
+  border-color: rgb(180, 173, 219);
+  border-width: 1px;
+  padding: 5px;
+}
+.chartSwitch button:hover{
+  background-color: rgb(67, 69, 148);
+  cursor: pointer;
 }
