@@ -6,6 +6,7 @@ import SignalStrength from './charts/SignalStrength';
 import BitRates from './charts/BitRates';
 import Channels from './charts/Channels';
 import Band from './charts/Band';
+import Table from './Table';
 const Dashboard = () => {
     const [activeChart, setActiveChart] = useState('signalChart');
     const [data, setData] = useState([]);
@@ -52,13 +53,17 @@ const Dashboard = () => {
         <>
             <Header></Header>
 
+            <div className='tableWrapper'>
+                <Table rows={data}></Table>
+            </div>
+            
             <nav className='chartSwitch'>
                 <ul>
                     <li>
                         <button onClick={() => setActiveChart('signalChart')}>Signal Strength</button>
                     </li>
                     <li>
-                        <button onClick={() => setActiveChart('bitRateChart')}>Bitrate</button>
+                        <button onClick={() => setActiveChart('bitRateChart')}>Network Bitrate</button>
                     </li>
                     <li>
                         <button onClick={() => setActiveChart('channelsChart')}>Channel Distribution</button>
