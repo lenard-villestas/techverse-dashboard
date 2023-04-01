@@ -7,6 +7,9 @@ body{
   font-family: roboto;
   min-height: 100vh;
   width: 100vw;
+  padding: 0;
+  margin: 0;
+  margin-top: 0;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -22,9 +25,16 @@ body::-webkit-scrollbar {
 }
 h1{
   font-weight: lighter;
+  margin-left: 2%;
 }
 
-
+.Header{
+  background-color: rgb(48, 48, 51);
+  margin: 0;
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+}
 
 
 

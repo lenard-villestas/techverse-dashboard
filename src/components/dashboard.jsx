@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Papa from 'papaparse';
+import Header from './Header';
 import SignalStrength from './charts/SignalStrength';
 import BitRates from './charts/BitRates';
 import Channels from './charts/Channels';
@@ -49,7 +50,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <h1 className='header'>Techverse Dashboard</h1>
+            <Header></Header>
 
             <nav className='chartSwitch'>
                 <ul>
