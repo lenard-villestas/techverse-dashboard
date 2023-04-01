@@ -4,6 +4,7 @@ import Papa from 'papaparse';
 import SignalStrength from './charts/SignalStrength';
 import BitRates from './charts/BitRates';
 import Channels from './charts/Channels';
+import Band from './charts/Band';
 const Dashboard = () => {
     const [activeChart, setActiveChart] = useState('signalChart');
     const [data, setData] = useState([]);
@@ -33,11 +34,13 @@ const Dashboard = () => {
     const renderChart = () => {
         switch (activeChart) {
             case 'signalChart':
-                return <SignalStrength rows={data}/>;
+                return <SignalStrength rows={data} />;
             case 'bitRateChart':
-                return <BitRates rows={data}/>;
+                return <BitRates rows={data} />;
             case 'channelsChart':
                 return <Channels rows={data} />;
+            case 'bandChart':
+                return <Band rows={data} />;
             // Add more cases for other charts
             default:
                 return null;
@@ -59,12 +62,15 @@ const Dashboard = () => {
                     <li>
                         <button onClick={() => setActiveChart('channelsChart')}>Channel Distribution</button>
                     </li>
+                    <li>
+                        <button onClick={() => setActiveChart('bandChart')}>Band Distribution</button>
+                    </li>
                     {/* Add more buttons for other charts */}
                 </ul>
             </nav>
 
             <div className='chart'>
-            {renderChart()}
+                {renderChart()}
             </div>
 
         </>

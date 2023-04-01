@@ -2,25 +2,33 @@ import React from 'react'
 import { Chart } from 'chart.js';
 import { useEffect, useState } from 'react';
 
-export default function Channels(props) {
+export default function Band(props) {
     Chart.defaults.color = "#ffffff";
     const [data, setData] = useState([]);
     //Build chart
     useEffect(() => {
         // JS - Destroy exiting Chart Instance to reuse <canvas> element
-        let chartStatus = Chart.getChart("channelsChart"); // <canvas> id
+        let chartStatus = Chart.getChart("bandChart"); // <canvas> id
         if (chartStatus != undefined) {
             chartStatus.destroy();
         }
-        const ctx = document.getElementById('channelsChart').getContext('2d');
+        const ctx = document.getElementById('bandChart').getContext('2d');
         let data = props.rows;
         new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: data.map((item) => item.SSID),
                 datasets: [{
-                    label: 'Channel',
-                    data: data.map((item) => item.Channel),
+                    label: 'Frequency GHz',
+                    data: data.map((item) => {
+                        if (item.Frequency) {
+                            // Use a regular expression to match the numeric portion of the string
+                            const band = item.Frequency.match(/\d+(\.\d+)?/)[0];
+                            return Number(band);
+                          } else {
+                            return 0; // or any other value you want to use for missing data
+                          }
+                      }),
                     borderWidth: 1
                 }]
             },
@@ -30,7 +38,7 @@ export default function Channels(props) {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'SSID vs Channel',
+                        text: 'SSID vs Frequency GHz',
                         font: {
                             size: 22,
                         },
@@ -61,6 +69,6 @@ export default function Channels(props) {
     }, [props.rows]);
 
     return (
-        <canvas id="channelsChart" style={{ width: "100%", maxHeight: "400px" }}></canvas>
+        <canvas id="bandChart" style={{ width: "100%", maxHeight: "400px" }}></canvas>
     )
 }
