@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import SignalStrength from './charts/SignalStrength';
 import BitRates from './charts/BitRates';
-
+import Channels from './charts/Channels';
 const Dashboard = () => {
     const [activeChart, setActiveChart] = useState('signalChart');
     const [data, setData] = useState([]);
@@ -36,8 +36,8 @@ const Dashboard = () => {
                 return <SignalStrength rows={data}/>;
             case 'bitRateChart':
                 return <BitRates rows={data}/>;
-            case 'chart3':
-                return <Chart3 />;
+            case 'channelsChart':
+                return <Channels rows={data} />;
             // Add more cases for other charts
             default:
                 return null;
@@ -57,7 +57,7 @@ const Dashboard = () => {
                         <button onClick={() => setActiveChart('bitRateChart')}>Bitrate</button>
                     </li>
                     <li>
-                        <button onClick={() => setActiveChart('chart3')}>Chart 3</button>
+                        <button onClick={() => setActiveChart('channelsChart')}>Channel Distribution</button>
                     </li>
                     {/* Add more buttons for other charts */}
                 </ul>
