@@ -9,19 +9,19 @@ import Band from './charts/Band';
 import Table from './Table';
 const Dashboard = () => {
     const [activeChart, setActiveChart] = useState('signalChart');
+    const [isConnected, setIsConnected] = useState(false);
     const [data, setData] = useState([]);
-    const sasToken = "sp=r&st=2023-03-30T22:16:46Z&se=2023-03-31T06:16:46Z&spr=https&sv=2021-12-02&sr=b&sig=OpZTMmWXYUwf9JIChzTL%2FdTBJvqKFPyRqKxb1l%2FYe5Y%3D";
-    const url = "https://techversestorage.blob.core.windows.net/techversecontainer/Samplefile.csv?" + sasToken;
+    const url = "https://techversestorage.blob.core.windows.net/techversecontainer/Samplefile.csv?sp=racw&st=2023-04-01T23:44:19Z&se=2023-04-30T07:44:19Z&spr=https&sv=2021-12-02&sr=b&sig=l8PvKCXflMZ8g4gZlxWJCJjG5WWSfToZYGpqGjJK97g%3D";
 
-    //parse CSV
+    //parse CSV from url
     useEffect(() => {
 
         // Parse the CSV data
-        Papa.parse('./Samplefile.csv', {
+        Papa.parse(url, {
             header: true,
             download: true,
             complete: function (results) {
-                //console.log(results.data)
+                console.log(results.data)
                 setData(results.data);
 
             },
@@ -31,6 +31,17 @@ const Dashboard = () => {
         });
 
     }, []);
+
+    //check connection interval
+    useEffect(() => {
+        checkConnection();
+        const intervalId = setInterval(() => {
+          checkConnection();
+        }, 20 * 1000); // Check the connection every 20 seconds
+      
+        return () => clearInterval(intervalId);
+      }, []);
+
 
     //chart switching
     const renderChart = () => {
@@ -49,9 +60,23 @@ const Dashboard = () => {
         }
     };
 
+    //check the connection with the server
+    const checkConnection = async () => {
+        try {
+          const response = await fetch(url);
+          if (response.status === 200) {
+            setIsConnected(true);
+          } else {
+            setIsConnected(false);
+          }
+        } catch (error) {
+          setIsConnected(false);
+        }
+      };
+      
     return (
         <>
-            <Header></Header>
+            <Header connection={isConnected}></Header>
 
             <div className='tableWrapper'>
                 <Table rows={data}></Table>
