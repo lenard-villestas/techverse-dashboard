@@ -42,10 +42,12 @@ h1{
 .time{
   right: 0;
   margin-left: 50%;
-  color: rgb(95, 216, 95);
+
 }
 
-
+.connection-status{
+  margin-left: 3%;
+}
 .tableWrapper{
   max-height: 40vh;
   overflow-y: scroll;

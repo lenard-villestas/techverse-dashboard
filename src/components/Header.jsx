@@ -20,16 +20,15 @@ const Header = (props) => {
 
   /**This will ensure that the server-rendered HTML does not contain any time-related content, and the time will be displayed after the component has been mounted on the client-side. */
   const localTime = time ? time.toLocaleTimeString() : '';
-  //check connection
-  //setIsConnected(props.connection);
+
 
   return (
     <div className='Header'>
       <h1 className='header'>Techverse Dashboard</h1>
-      <span className='time'>Calgary, AB (GMT-6) {localTime}</span>
+      <span className='time'>Calgary, AB (GMT-6) <span style={{color:"aquamarine"}}>{localTime}</span> </span>
       <span className='connection-status'>
-        <p>Server Connection: {props.connection ? 'Good' : 'Bad'}</p>
-
+        <p>Server Connection: {props.connection ? <span style={{color:"rgb(95, 216, 95)"}}>Good</span> : <span style={{color:"rgb(230, 21, 21)"}}>Bad</span>}</p>
+        
       </span>
     </div>
   );
