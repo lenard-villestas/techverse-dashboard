@@ -17,7 +17,8 @@ export default function Channels(props) {
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data.map((item) => item.SSID),
+                labels: [...new Set(data.map((item) => item.SSID))],
+                //data.map((item) => item.SSID),
                 datasets: [{
                     label: 'Channel',
                     data: data.map((item) => item.Channel),

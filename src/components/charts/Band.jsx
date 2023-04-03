@@ -17,7 +17,8 @@ export default function Band(props) {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data.map((item) => item.SSID),
+                labels: [...new Set(data.map((item) => item.SSID))],
+                //data.map((item) => item.SSID),
                 datasets: [{
                     label: 'Frequency GHz',
                     data: data.map((item) => {
