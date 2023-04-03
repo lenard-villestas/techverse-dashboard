@@ -23,5 +23,8 @@
     "react-chartjs-2": "^5.2.0",
     "react-csv-to-table": "^0.0.1",
     "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "js-cookies": "^1.0.4"
   }
 }

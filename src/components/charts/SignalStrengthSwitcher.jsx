@@ -20,24 +20,24 @@ export default function SignalStrengthSwitcher(props) {
       }, { addresses: {}, ssids: [] }).ssids;
 
 
-    const uniqueAddresses = data.reduce((accumulator, item) => {
-        // Check if the current item's Address is not already in the accumulator
-        const addressExists = accumulator.some(obj => obj.Address === item.Address);
+    // const uniqueAddresses = data.reduce((accumulator, item) => {
+    //     // Check if the current item's Address is not already in the accumulator
+    //     const addressExists = accumulator.some(obj => obj.Address === item.Address);
         
-        if (!addressExists) {
-          // Get the unique SSID associated with the current Address
-          const associatedSSID = data.find(obj => obj.Address === item.Address && obj.SSID)?.SSID;
+    //     if (!addressExists) {
+    //       // Get the unique SSID associated with the current Address
+    //       const associatedSSID = data.find(obj => obj.Address === item.Address && obj.SSID)?.SSID;
           
-          // Add the current Address and associated SSID to the accumulator
-          accumulator.push({ Address: item.Address, SSID: associatedSSID });
-        }
+    //       // Add the current Address and associated SSID to the accumulator
+    //       accumulator.push({ Address: item.Address, SSID: associatedSSID });
+    //     }
         
-        return accumulator;
-      }, []);
+    //     return accumulator;
+    //   }, []);
 
     //chart switching
     const renderChart = () => {
-        console.log(uniqueAddresses);
+        
         if (activeChart === 'default') {
             return <h2 style={{ margin:"auto" }}>Select an SSID for Signal Strength chart</h2>;
         } else {

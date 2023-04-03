@@ -86,12 +86,73 @@ h1{
 .tableWrapper th{
   font-size: 1.3rem;
   color: rgb(182, 211, 250);
+  
 }
 
-
-.chartSwitch{
+.dashSwitch{
   width: 100%;
   margin-left: 1rem;
+
+}
+.dashSwitch ul{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+
+  
+}
+.dashSwitch ul li button{
+
+  background-color: rgb(80, 82, 180);
+  color: white;
+  border-style: none;
+
+  font-size: 1rem;
+  border-style:ridge;
+  border-color: rgb(180, 173, 219);
+  border-width: 1px;
+  padding: 5px;
+  width: fit-content;
+  border-radius: 10px;
+  margin-right: 3px;
+}
+.dashSwitch button:hover{
+  background-color: rgb(41, 41, 41);
+  cursor: pointer;
+}
+.chartSwitch ul li button{
+
+  background-color: rgb(56, 56, 56);
+  color: white;
+  border-style: none;
+
+  font-size: 1rem;
+  border-style:ridge;
+  border-color: rgb(180, 173, 219);
+  border-width: 1px;
+  padding: 5px;
+  width: fit-content;
+}
+
+.chartSwitch{
+  width: 95%;
+  left: 0;
+  overflow-x: scroll;
+  margin: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.chartSwitch::-webkit-scrollbar {
+  background-color: #494949;
+  height: 6px;
+  border-radius: 5px;
+}
+.chartSwitch::-webkit-scrollbar-thumb {
+  background-color: #498299;
+  border-radius: 4px;
 }
 .chartSwitch ul{
   list-style-type: none;

@@ -17,10 +17,10 @@ export default function BitRates(props) {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data.map((item) => item.Date + item.Time),
+                labels: filteredRows.map((item) => item.Date + item.Time),
                 datasets: [{
                     label: 'Bitrate Mb/s',
-                    data: data.map((item) => {
+                    data: filteredRows.map((item) => {
                         if (item.Bitrates) {
                             // Use a regular expression to match the numeric portion of the string
                             const bitrate = item.Bitrates.match(/\d+/)[0];

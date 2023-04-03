@@ -15,7 +15,7 @@ export default function SignalStrength(props) {
         const ctx = document.getElementById('signalChart').getContext('2d');
         let data = props.rows;
         const filteredRows = data.filter(row => row.SSID == props.ssid);
-        console.log(filteredRows);
+        
         new Chart(ctx, {
             type: 'bar',
             data: {

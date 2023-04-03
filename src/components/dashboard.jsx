@@ -7,6 +7,8 @@ import Band from './charts/Band';
 import Table from './Table';
 import SignalStrengthSwitcher from './charts/SignalStrengthSwitcher';
 import BitRateSwitcher from './charts/BitRateSwitcher';
+
+
 const Dashboard = () => {
     const [activeChart, setActiveChart] = useState('signalChart');
     const [isConnected, setIsConnected] = useState(false);
@@ -22,7 +24,7 @@ const Dashboard = () => {
             header: true,
             download: true,
             complete: function (results) {
-                console.log(results.data)
+                //console.log(results.data)
                 setData(results.data);
 
             },
@@ -83,7 +85,7 @@ const Dashboard = () => {
                 <Table rows={data}></Table>
             </div>
             
-            <nav className='chartSwitch'>
+            <nav className='dashSwitch'>
                 <ul>
                     <li>
                         <button onClick={() => setActiveChart('signalChart')}>Signal Strength</button>
