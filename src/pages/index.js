@@ -30,6 +30,7 @@ export default function Home() {
       console.log("log in success");
     } else {
       console.log("Error invalid credentials");
+      alert("Error invalid credentials");
     }
   };
 
