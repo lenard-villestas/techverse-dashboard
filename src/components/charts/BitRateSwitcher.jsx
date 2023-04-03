@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import SignalStrength from './SignalStrength';
+import BitRates from './BitRates';
 
-export default function SignalStrengthSwitcher(props) {
+export default function BitRateSwitcher(props) {
     const [activeChart, setActiveChart] = useState('default');
     const data = props.rows;
 
@@ -39,9 +39,9 @@ export default function SignalStrengthSwitcher(props) {
     const renderChart = () => {
         console.log(uniqueAddresses);
         if (activeChart === 'default') {
-            return <h2 style={{ margin:"auto" }}>Select an SSID for Signal Strength chart</h2>;
+            return <h2 style={{ margin:"auto" }}>Select an SSID for Bitrate chart</h2>;
         } else {
-            return <SignalStrength ssid={activeChart} rows={data}/>;
+            return <BitRates ssid={activeChart} rows={data}/>;
         }
 
     };

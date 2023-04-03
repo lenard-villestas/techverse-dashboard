@@ -2,12 +2,11 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import Header from './Header';
-import SignalStrength from './charts/SignalStrength';
-import BitRates from './charts/BitRates';
 import Channels from './charts/Channels';
 import Band from './charts/Band';
 import Table from './Table';
 import SignalStrengthSwitcher from './charts/SignalStrengthSwitcher';
+import BitRateSwitcher from './charts/BitRateSwitcher';
 const Dashboard = () => {
     const [activeChart, setActiveChart] = useState('signalChart');
     const [isConnected, setIsConnected] = useState(false);
@@ -19,7 +18,7 @@ const Dashboard = () => {
     useEffect(() => {
 
         // Parse the CSV data
-        Papa.parse("./Samplefile.csv", {
+        Papa.parse(url, {
             header: true,
             download: true,
             complete: function (results) {
@@ -51,7 +50,7 @@ const Dashboard = () => {
             case 'signalChart':
                 return <SignalStrengthSwitcher rows={data} />;
             case 'bitRateChart':
-                return <BitRates rows={data} />;
+                return <BitRateSwitcher rows={data} />;
             case 'channelsChart':
                 return <Channels rows={data} />;
             case 'bandChart':

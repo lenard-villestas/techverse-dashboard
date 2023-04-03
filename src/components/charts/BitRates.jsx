@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 
 export default function BitRates(props) {
     Chart.defaults.color = "#ffffff";
-    const [data, setData] = useState([]);
     //Build chart
     useEffect(() => {
         // JS - Destroy exiting Chart Instance to reuse <canvas> element
@@ -14,10 +13,11 @@ export default function BitRates(props) {
         }
         const ctx = document.getElementById('bitRateChart').getContext('2d');
         let data = props.rows;
+        const filteredRows = data.filter(row => row.SSID == props.ssid);
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data.map((item) => item.SSID),
+                labels: data.map((item) => item.Date + item.Time),
                 datasets: [{
                     label: 'Bitrate Mb/s',
                     data: data.map((item) => {
@@ -38,7 +38,7 @@ export default function BitRates(props) {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'SSID vs Bitrate Mb/s',
+                        text: props.ssid+'Bitrate over time',
                         font: {
                             size: 22,
                         },
@@ -66,7 +66,7 @@ export default function BitRates(props) {
                 
             }
         });
-    }, [props.rows]);
+    }, [props.rows,props.ssid]);
 
     return (
         <canvas id="bitRateChart" style={{ width: "100%", maxHeight: "400px" }}></canvas>

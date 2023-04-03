@@ -49,14 +49,18 @@ h1{
   margin-left: 3%;
 }
 .tableWrapper{
-  max-height: 40vh;
+  max-height: 60vh;
   overflow-y: scroll;
   width: 90%;
   margin: auto;
   margin-top: 3%;
   padding: 0;
   margin-bottom: 3%;
-  
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: #757575;
+  padding: 20px;
 
 }
 .dataTable{
@@ -76,6 +80,14 @@ h1{
   background-color: #498299;
   border-radius: 4px;
 }
+.tableWrapper tr:nth-child(even) {
+  background-color: #2e2e2e;
+}
+.tableWrapper th{
+  font-size: 1.3rem;
+  color: rgb(182, 211, 250);
+}
+
 
 .chartSwitch{
   width: 100%;
@@ -102,6 +114,7 @@ h1{
   padding: 5px;
   width: fit-content;
 }
+
 .chartSwitch button:hover{
   background-color: rgb(67, 69, 148);
   cursor: pointer;

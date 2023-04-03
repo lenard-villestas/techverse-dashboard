@@ -15,7 +15,7 @@ export default function Band(props) {
         const ctx = document.getElementById('bandChart').getContext('2d');
         let data = props.rows;
         new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: [...new Set(data.map((item) => item.Address))],
                 //data.map((item) => item.SSID),
