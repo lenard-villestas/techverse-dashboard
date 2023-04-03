@@ -175,6 +175,8 @@ h1{
   width: fit-content;
   border-radius: 10px;
   margin-right: 3px;
+  border: none;
+  outline: none;
 }
 .dashSwitch button:hover{
   background-color: rgb(41, 41, 41);
@@ -185,13 +187,11 @@ h1{
   background-color: rgb(56, 56, 56);
   color: white;
   border-style: none;
-
   font-size: 1rem;
-  border-style:ridge;
-  border-color: rgb(180, 173, 219);
-  border-width: 1px;
   padding: 5px;
   width: fit-content;
+  outline: none;
+  
 }
 
 .chartSwitch{
