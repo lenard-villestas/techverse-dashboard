@@ -7,10 +7,12 @@ import BitRates from './charts/BitRates';
 import Channels from './charts/Channels';
 import Band from './charts/Band';
 import Table from './Table';
+import SignalStrengthSwitcher from './charts/SignalStrengthSwitcher';
 const Dashboard = () => {
     const [activeChart, setActiveChart] = useState('signalChart');
     const [isConnected, setIsConnected] = useState(false);
     const [data, setData] = useState([]);
+
     const url = "https://techversestorage.blob.core.windows.net/techversecontainer/Samplefile.csv?sp=racw&st=2023-04-01T23:44:19Z&se=2023-04-30T07:44:19Z&spr=https&sv=2021-12-02&sr=b&sig=l8PvKCXflMZ8g4gZlxWJCJjG5WWSfToZYGpqGjJK97g%3D";
 
     //parse CSV from url
@@ -47,7 +49,7 @@ const Dashboard = () => {
     const renderChart = () => {
         switch (activeChart) {
             case 'signalChart':
-                return <SignalStrength rows={data} />;
+                return <SignalStrengthSwitcher rows={data} />;
             case 'bitRateChart':
                 return <BitRates rows={data} />;
             case 'channelsChart':

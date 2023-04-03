@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function SignalStrength(props) {
     Chart.defaults.color = "#ffffff";
-    const [data, setData] = useState([]);
+
     //Build chart
     useEffect(() => {
         // JS - Destroy exiting Chart Instance to reuse <canvas> element
@@ -14,13 +14,15 @@ export default function SignalStrength(props) {
         }
         const ctx = document.getElementById('signalChart').getContext('2d');
         let data = props.rows;
+        const filteredRows = data.filter(row => row.SSID == props.ssid);
+        console.log(filteredRows);
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data.map((item) => item.SSID),
+                labels: filteredRows.map((item) => item.Date + item.Time),
                 datasets: [{
                     label: 'Signal Strength',
-                    data: data.map((item) => item.Signal),
+                    data: filteredRows.map((item) => item.Signal),
                     borderWidth: 1
                 }]
             },
@@ -30,7 +32,7 @@ export default function SignalStrength(props) {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'SSID vs Signal Strength',
+                        text: props.ssid +' - Signal Strength over time',
                         font: {
                             size: 22,
                         },
@@ -58,7 +60,7 @@ export default function SignalStrength(props) {
                 
             }
         });
-    }, [props.rows]);
+    }, [props.rows,props.ssid]);
 
     return (
         <canvas id="signalChart" style={{ width: "100%", maxHeight: "400px" }}></canvas>
