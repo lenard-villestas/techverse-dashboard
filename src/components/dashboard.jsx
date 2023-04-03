@@ -9,7 +9,7 @@ import SignalStrengthSwitcher from './charts/SignalStrengthSwitcher';
 import BitRateSwitcher from './charts/BitRateSwitcher';
 
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     const [activeChart, setActiveChart] = useState('signalChart');
     const [isConnected, setIsConnected] = useState(false);
     const [data, setData] = useState([]);
@@ -79,7 +79,7 @@ const Dashboard = () => {
       
     return (
         <>
-            <Header connection={isConnected}></Header>
+            <Header connection={isConnected}  handleLogout={props.handleLogout}></Header>
 
             <div className='tableWrapper'>
                 <Table rows={data}></Table>

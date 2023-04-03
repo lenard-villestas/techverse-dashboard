@@ -30,6 +30,7 @@ const Header = (props) => {
         <p>Server Connection: {props.connection ? <span style={{color:"rgb(95, 216, 95)"}}>Good</span> : <span style={{color:"rgb(230, 21, 21)"}}>Bad</span>}</p>
         
       </span>
+      <span className='logoutB'><button onClick={props.handleLogout}>Logout</button></span>
     </div>
   );
 }

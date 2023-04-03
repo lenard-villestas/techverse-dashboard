@@ -13,11 +13,20 @@ export default function Home() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    // Read from localStorage to set the initial loggedIn state
+    const loggedInState = JSON.parse(localStorage.getItem('loggedIn'));
+    if (loggedInState) {
+      setLoggedIn(true);
+    }
+  }, [])
+
   const handleLogin = (event) => {
     event.preventDefault();
 
     if (username === "admin" && password === "password") {
       setLoggedIn(true);
+      localStorage.setItem('loggedIn', true);
       console.log("log in success");
     } else {
       console.log("Error invalid credentials");
@@ -26,6 +35,7 @@ export default function Home() {
 
   const handleLogout = () => {
     setLoggedIn(false);
+    localStorage.setItem('loggedIn', false);
   };
 
   return (
@@ -37,7 +47,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     {loggedIn ? (
-      <Dashboard></Dashboard>
+      <Dashboard handleLogout={handleLogout}></Dashboard>
     ) : (
       <div className='loginWrapper'>
       <form onSubmit={handleLogin}>
