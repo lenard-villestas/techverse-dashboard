@@ -7,9 +7,9 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
-  
 
-  const [loggedIn, setLoggedIn] =  useState(false);
+
+  const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -46,24 +46,29 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    {loggedIn ? (
-      <Dashboard handleLogout={handleLogout}></Dashboard>
-    ) : (
-      <div className='loginWrapper'>
-      <form onSubmit={handleLogin}>
-          <label>
-            Username:
-            <input type="text"  onChange={(e) => setUsername(e.target.value)}/>
-          </label>
-          <label>
-            Password:
-            <input type="password" onChange={(e) => setPassword(e.target.value)}/>
-          </label>
-          <button type="submit">Login</button>
-        </form>
+      {loggedIn ? (
+        <Dashboard handleLogout={handleLogout}></Dashboard>
+      ) : (
+        <div className='loginWrapper'>
+
+          <form onSubmit={handleLogin}>
+            <h2>Techverse Dashboard - Login</h2>
+
+            <label>
+              Username:
+            </label>
+            <input type="text" onChange={(e) => setUsername(e.target.value)} />
+
+            <label>
+              Password:
+            </label>
+            <input type="password" onChange={(e) => setPassword(e.target.value)} />
+
+            <button type="submit">Login</button>
+          </form>
         </div>
-    )
-    }
+      )
+      }
     </>
   )
 }
