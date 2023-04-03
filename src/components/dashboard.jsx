@@ -17,7 +17,7 @@ const Dashboard = () => {
     useEffect(() => {
 
         // Parse the CSV data
-        Papa.parse(url, {
+        Papa.parse("./Samplefile.csv", {
             header: true,
             download: true,
             complete: function (results) {

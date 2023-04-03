@@ -17,7 +17,7 @@ export default function Band(props) {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: [...new Set(data.map((item) => item.SSID))],
+                labels: [...new Set(data.map((item) => item.Address))],
                 //data.map((item) => item.SSID),
                 datasets: [{
                     label: 'Frequency GHz',
@@ -39,7 +39,7 @@ export default function Band(props) {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'SSID vs Frequency GHz',
+                        text: 'Frequencies being used by Addresses',
                         font: {
                             size: 22,
                         },

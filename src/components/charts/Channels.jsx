@@ -17,7 +17,7 @@ export default function Channels(props) {
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: [...new Set(data.map((item) => item.SSID))],
+                labels: [...new Set(data.map((item) => item.Address))],
                 //data.map((item) => item.SSID),
                 datasets: [{
                     label: 'Channel',
@@ -31,7 +31,7 @@ export default function Channels(props) {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'SSID vs Channel',
+                        text: 'Channels being used by Addresses',
                         font: {
                             size: 22,
                         },
