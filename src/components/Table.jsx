@@ -10,6 +10,8 @@ const Table =(props)=> {
     <table className='dataTable'>
       <thead>
         <tr>
+          <th>Date</th>
+          <th>Time</th>
           <th>SSID</th>
           <th>Address</th>
           <th>Signal</th>
@@ -25,6 +27,8 @@ const Table =(props)=> {
       <tbody>
         {data.map((row, index) => (
           <tr key={index}>
+            <td>{row.Date}</td>
+            <td>{row.Time}</td>
             <td>{row.SSID}</td>
             <td>{row.Address}</td>
             <td>{row.Signal}</td>
