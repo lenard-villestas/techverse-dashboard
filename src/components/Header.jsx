@@ -21,7 +21,6 @@ const Header = (props) => {
   /**This will ensure that the server-rendered HTML does not contain any time-related content, and the time will be displayed after the component has been mounted on the client-side. */
   const localTime = time ? time.toLocaleTimeString() : '';
 
-
   return (
     <div className='Header'>
       <h1 className='header'>Techverse Dashboard</h1>
