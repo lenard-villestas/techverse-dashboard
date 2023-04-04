@@ -16,24 +16,35 @@ const Dashboard = (props) => {
 
     const url = "https://techversestorage.blob.core.windows.net/techversecontainer/Samplefile.csv?sp=racw&st=2023-04-01T23:44:19Z&se=2023-04-30T07:44:19Z&spr=https&sv=2021-12-02&sr=b&sig=l8PvKCXflMZ8g4gZlxWJCJjG5WWSfToZYGpqGjJK97g%3D";
 
-    //parse CSV from url
     useEffect(() => {
-
-        // Parse the CSV data
-        Papa.parse(url, {
+        const fetchData = () => {
+          Papa.parse(url, {
             header: true,
             download: true,
             complete: function (results) {
-                //console.log(results.data)
-                setData(results.data);
-
+                console.log("data parsed");
+              setData(results.data);
             },
             error: function (error) {
-                console.error('Failed to parse CSV data', error);
+              console.error('Failed to parse CSV data', error);
             }
-        });
-
-    }, []);
+          });
+        };
+      
+        // Fetch data initially
+        fetchData();
+      
+        // Fetch data every 10 seconds
+        const intervalId = setInterval(() => {
+          fetchData();
+        }, 10000);
+      
+        // Cleanup function
+        return () => {
+          clearInterval(intervalId);
+        };
+      }, []);
+      
 
     //check connection interval
     useEffect(() => {
