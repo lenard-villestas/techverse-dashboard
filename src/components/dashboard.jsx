@@ -9,13 +9,15 @@ import SignalStrengthSwitcher from './charts/SignalStrengthSwitcher';
 import BitRateSwitcher from './charts/BitRateSwitcher';
 
 
+
 const Dashboard = (props) => {
     const [activeChart, setActiveChart] = useState('signalChart');
     const [isConnected, setIsConnected] = useState(false);
     const [data, setData] = useState([]);
 
-    const url = "https://techversestorage.blob.core.windows.net/techversecontainer/Samplefile.csv?sp=racw&st=2023-04-01T23:44:19Z&se=2023-04-30T07:44:19Z&spr=https&sv=2021-12-02&sr=b&sig=l8PvKCXflMZ8g4gZlxWJCJjG5WWSfToZYGpqGjJK97g%3D";
-
+    //this server is now inactive const url = "https://techversestorage.blob.core.windows.net/techversecontainer/Samplefile.csv?sp=racw&st=2023-04-01T23:44:19Z&se=2023-04-30T07:44:19Z&spr=https&sv=2021-12-02&sr=b&sig=l8PvKCXflMZ8g4gZlxWJCJjG5WWSfToZYGpqGjJK97g%3D";
+    
+    const url = "/SampleFile.csv"; //sample file
     useEffect(() => {
         const fetchData = () => {
           Papa.parse(url, {
